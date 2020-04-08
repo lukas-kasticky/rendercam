@@ -10,6 +10,8 @@ local debugdraw = require "rendercam.debug-draw"
 local rdebug = rendercam.debug
 local simplex = require "rendercam.simplex2d"
 
+go.property("debug_bounds", false)
+go.property("debug_camera_name", false)
 go.property("parent", msg.url())
 go.property("active", true)
 go.property("orthographic", true)
@@ -43,6 +45,10 @@ local FOLLOW = hash("follow")
 local SET_BOUNDS = hash("set_bounds")
 
 function init(self)
+	-- set debug values
+	rdebug.bounds = self.debug_bounds
+	rdebug.show_camera_name = self.debug_camera_name
+	
 	-- Get initial scale mode
 	for i,v in ipairs({ "expandView", "fixedArea", "fixedWidth", "fixedHeight" }) do
 		self[v] = self[v] and hash(v)

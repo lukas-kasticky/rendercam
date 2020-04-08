@@ -12,8 +12,8 @@ local SCALEMODE_FIXEDWIDTH = hash("fixedWidth")
 local SCALEMODE_FIXEDHEIGHT = hash("fixedHeight")
 
 M.debug = {
-	bounds = true,
-	show_camera_name = true,
+	bounds = false,
+	show_camera_name = false,
 }
 
 M.ortho_zoom_speed = 0.01

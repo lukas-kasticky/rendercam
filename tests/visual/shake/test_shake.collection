@@ -17,6 +17,16 @@ instances {
   component_properties {
     id: "script"
     properties {
+      id: "debug_bounds"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "debug_camera_name"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
       id: "active"
       value: "false"
       type: PROPERTY_TYPE_BOOLEAN
@@ -42,6 +52,19 @@ instances {
     y: 0.0
     z: 0.0
     w: 1.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "debug_bounds"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "debug_camera_name"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
   }
   scale3 {
     x: 1.0

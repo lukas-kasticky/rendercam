@@ -16,6 +16,16 @@ instances {
   component_properties {
     id: "script"
     properties {
+      id: "debug_bounds"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
+      id: "debug_camera_name"
+      value: "true"
+      type: PROPERTY_TYPE_BOOLEAN
+    }
+    properties {
       id: "nearZ"
       value: "-20.0"
       type: PROPERTY_TYPE_NUMBER
