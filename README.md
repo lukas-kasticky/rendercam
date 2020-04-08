@@ -2,13 +2,17 @@
 # Rendercam
 A universal render script & camera package for all the common camera types: perspective or orthographic, fixed aspect ratio or unfixed aspect ratio, plus four options for how the view changes for different resolutions and window sizes, and more. Also does screen-to-world and world-to-screen transforms for any camera type; camera switching, zooming, panning, shaking, recoil, and lerped following.
 
+**Note: This fork is intended for everyone that wants to use the new rendercam features without waiting for the official 2.0 release and is based on commit [`de7c43d`](https://github.com/rgrams/rendercam/commit/de7c43d31569ec1ec5879a0ef28d78ec2781e3d8) from the [original `dev`](https://github.com/rgrams/rendercam/tree/dev) branch.**
+
+The only added feature is that you can now toggle debug mode from the camera script properties.
+
 ---
 
 ## Installation
 
 Install Rendercam in your project by adding it as a [library dependency](https://www.defold.com/manuals/libraries/). Open your game.project file and in the "Dependencies" field under "Project", add:
 ```
-https://github.com/rgrams/rendercam/archive/v1.0.zip
+https://github.com/lukas-kasticky/rendercam/archive/v2.0-pre2.zip
 ```
 
 Then open the "Project" menu of the editor and click "Fetch Libraries". You should see the "rendercam" folder appear in your assets panel after a few moments.
