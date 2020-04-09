@@ -4,7 +4,11 @@ A universal render script & camera package for all the common camera types: pers
 
 **Note: This fork is intended for everyone that wants to use the new rendercam features without waiting for the official 2.0 release and is based on commit [`de7c43d`](https://github.com/rgrams/rendercam/commit/de7c43d31569ec1ec5879a0ef28d78ec2781e3d8) from the [original `dev`](https://github.com/rgrams/rendercam/tree/dev) branch.**
 
-The only added feature is that you can now toggle debug mode from the camera script properties.
+Added features:
+
+- Debug mode defaults to `false`
+- Toggleable debug mode in properties pane
+- Set camera boundaries from properties pane
 
 ---
 
@@ -35,6 +39,12 @@ If either of the cameras is inside a secondary collection with a different name,
 ## Camera Settings
 
 To change your camera settings, expand the camera game object in the outline and select it's script component. In the properties panel you will have a bunch of different options.
+
+#### Debug Bounds <kbd>bool</kbd>
+If checked, the camera draws [boundaries](#camera-bounds).
+
+#### Debug Camera Name <kbd>bool</kbd>
+If checked, the name of the current camera will appear on the top left.
 
 #### Active <kbd>bool</kbd>
 Whether the camera is initially active or not. If you have multiple cameras you will want to uncheck this property on your secondary cameras to make sure the right camera is used. If you have no active camera a fallback camera will be used for rendering and you will see a message in the console.
@@ -87,11 +97,9 @@ Like "Fixed Width", but switched. The camera will always show the same height of
 #### Camera bounds:
 
 ##### Use Camera Bounds <kbd>bool</kbd>
-
 If checked, limits for the camera's position in its local X/Y are set. The camera will not be allowed to move outside the specified rectangle bounds (except movement due to camera shake and recoil).
 
 ##### Camera Bounds {Left, Right, Top, Bottom} <kbd>number</kbd>
-
 Sets the boundaries of the limit rectangle, in coordinates local to the camera.
 
 ## Camera Functions & Messages
@@ -101,7 +109,7 @@ local rendercam = require "rendercam.rendercam"
 ```
 A lot of Rendercam's functions have optional arguments. These are listed in brackets, `[like_this]`. For example, most of the camera functions have an optional `[cam_id]` argument. You can leave this out and the functions will operate on the current camera.
 
-With Rendercam's camera following feature, the delayed nature of messages can be useful, so you can also send a `"follow"` message to a camera instead of calling `rendercam.follow()`. [See below](https://github.com/rgrams/rendercam/tree/dev#follow--target_id-allowmultifollow-) for details.
+With Rendercam's camera following feature, the delayed nature of messages can be useful, so you can also send a `"follow"` message to a camera instead of calling `rendercam.follow()`. [See below](#follow--target_id-allowmultifollow-) for details.
 
 ### rendercam.activate_camera(cam_id)
 Activate a different camera. If you have multiple cameras, use this to switch between them, otherwise you don't need it. Cameras with "Active" checked will activate themselves on init.
