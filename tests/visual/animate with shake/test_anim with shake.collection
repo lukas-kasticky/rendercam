@@ -17,12 +17,12 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "debug_bounds"
+      id: "debugBounds"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "debug_camera_name"
+      id: "debugCameraName"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
@@ -56,12 +56,12 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "debug_bounds"
+      id: "debugBounds"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "debug_camera_name"
+      id: "debugCameraName"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
@@ -124,12 +124,12 @@ instances {
   component_properties {
     id: "script"
     properties {
-      id: "debug_bounds"
+      id: "debugBounds"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }
     properties {
-      id: "debug_camera_name"
+      id: "debugCameraName"
       value: "true"
       type: PROPERTY_TYPE_BOOLEAN
     }

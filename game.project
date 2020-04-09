@@ -1,6 +1,6 @@
 [project]
 title = Rendercam
-version = 1.0
+version = 2.0-pre3
 dependencies = 
 
 [bootstrap]
