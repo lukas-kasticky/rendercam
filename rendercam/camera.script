@@ -10,8 +10,8 @@ local debugdraw = require "rendercam.debug-draw"
 local rdebug = rendercam.debug
 local simplex = require "rendercam.simplex2d"
 
-go.property("debug_bounds", false)
-go.property("debug_camera_name", false)
+go.property("debugBounds", false)
+go.property("debugCameraName", false)
 go.property("parent", msg.url())
 go.property("active", true)
 go.property("orthographic", true)
@@ -34,6 +34,13 @@ go.property("fixedArea", true)
 go.property("fixedWidth", false)
 go.property("fixedHeight", false)
 
+-- vector4 would show up as X Y Z W, which is confusing
+go.property("useCameraBounds", false)
+go.property("cameraBoundsLeft", 0)
+go.property("cameraBoundsRight", 0)
+go.property("cameraBoundsTop", 0)
+go.property("cameraBoundsBottom", 0)
+
 local TWO_PI = math.pi * 2
 local FORWARDVEC = vmath.vector3(0, 0, -1)
 local UPVEC = vmath.vector3(0, 1, 0)
@@ -46,8 +53,8 @@ local SET_BOUNDS = hash("set_bounds")
 
 function init(self)
 	-- set debug values
-	rdebug.bounds = self.debug_bounds
-	rdebug.show_camera_name = self.debug_camera_name
+	rdebug.bounds = self.debugBounds
+	rdebug.show_camera_name = self.debugCameraName
 	
 	-- Get initial scale mode
 	for i,v in ipairs({ "expandView", "fixedArea", "fixedWidth", "fixedHeight" }) do
@@ -112,6 +119,25 @@ function init(self)
 		end
 	end
 
+	-- set viewport bounds
+	self.viewportBounds = nil
+	if self.useCameraBounds then
+		local left = self.cameraBoundsLeft
+		local right = self.cameraBoundsRight
+		local top = self.cameraBoundsTop
+		local bottom = self.cameraBoundsBottom
+		self.viewportBounds = {
+			-- see rendercam.lua:227
+			lt = left, rt = right, top = top, bot = bottom,
+			width = right - left, height = top - bottom,
+			centerX = left + (right - left)/2,
+			centerY = bottom + (top - bottom)/2,
+			topRight = vmath.vector3(right, top, 0),
+			bottomLeft = vmath.vector3(left, bottom, 0),
+		}
+	end
+		
+
 	-- Put all camera data into a table for rendercam module and init camera.
 	self.data = {
 		active = self.active,
@@ -143,7 +169,8 @@ function init(self)
 		follows = {},
 		following = false,
 		hasFollowDeadzone = false,
-		followDeadzone= vmath.vector4(0, 0, 0, 0)
+		followDeadzone = vmath.vector4(0, 0, 0, 0),
+		viewportBounds = self.viewportBounds
 	}
 	rendercam.camera_init(self.id, self.data)
 

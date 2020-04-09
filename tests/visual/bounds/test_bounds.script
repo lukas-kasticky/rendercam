@@ -1,3 +1,5 @@
+-- camera1: set bounds with function call
+-- camera3: set bounds with object properties
 
 local rendercam = require 'rendercam.rendercam'
 

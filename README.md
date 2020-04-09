@@ -69,20 +69,30 @@ If checked, the "View Area" setting will be used to calculate the initial area o
 #### View Area <kbd>vector3</kbd>
 The dimensions in world space that the camera will show, if "Use View Area" is checked. They will be measured at "2d World Z" (usually 0). If using a fixed aspect ratio, the view area Y value will be overwritten based on the X value if they don't match the specified aspect ratio.
 
-### View Scale Modes:
-The last four checkbox settings determine the scale mode used to calculate how the view changes anytime the window resolution is changed (including on init if your camera settings don't match your display settings in game.project). Only the first mode checked will be used (and a default is used if none are checked). Note that Fixed Area, Fixed Width, and Fixed Height all work exactly the same if you're using a fixed aspect ratio (since the aspect ratio locks the viewport dimensions together).
+#### View Scale Modes:
+The next four checkbox settings determine the scale mode used to calculate how the view changes anytime the window resolution is changed (including on init if your camera settings don't match your display settings in game.project). Only the first mode checked will be used (and a default is used if none are checked). Note that Fixed Area, Fixed Width, and Fixed Height all work exactly the same if you're using a fixed aspect ratio (since the aspect ratio locks the viewport dimensions together).
 
-#### Expand View
+##### Expand View <kbd>bool</kbd>
 The view area will expand and contract with the window size, keeping the world at the same size on-screen. If you set your camera view area to 800x600, but your game starts with a window size of 1600x900 (as set in game.project), then the view will expand to fill the window and show a 1600x900 area of the world. Likewise if the window size is smaller---the camera will simply show less of the world.
 
-#### Fixed Area
+##### Fixed Area <kbd>bool</kbd>
 The camera will zoom in or out to show exactly the same _area_ of the game world.  This works great for a wide range of window or display proportions, if you don't need either dimension to be exactly the same for everyone.  
 
-#### Fixed Width
+##### Fixed Width <kbd>bool</kbd>
 The camera will always show the same width of game world, the height is adjusted to fit. If the window is stretched vertically, it will show more space on top and bottom.
 
-#### Fixed Height
+##### Fixed Height <kbd>bool</kbd>
 Like "Fixed Width", but switched. The camera will always show the same height of the game world, and the width will vary with the window proportion. If you make the window tall and skinny, you'll see the same distance up and down, but very little side to side.
+
+#### Camera bounds:
+
+##### Use Camera Bounds <kbd>bool</kbd>
+
+If checked, limits for the camera's position in its local X/Y are set. The camera will not be allowed to move outside the specified rectangle bounds (except movement due to camera shake and recoil).
+
+##### Camera Bounds {Left, Right, Top, Bottom} <kbd>number</kbd>
+
+Sets the boundaries of the limit rectangle, in coordinates local to the camera.
 
 ## Camera Functions & Messages
 To use the other features of Rendercam you need to call module functions from a script. First, require the rendercam module in your script:
